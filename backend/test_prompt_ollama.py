@@ -1,9 +1,9 @@
 import json
 import csv
-from ollama import Ollama  # pip install ollama
+from ollama import Client  # Correct import
 
 # Initialize Ollama client
-client = Ollama()
+client = Client()
 
 # Load system prompt
 with open("PROMPT.md", "r") as f:
@@ -56,13 +56,13 @@ with open(csv_file, mode="w", newline="", encoding="utf-8") as csvfile:
 
         # First AI call
         response = client.chat(
-            model="ollama",  # Replace with your Ollama model
+            model="llama2",  # Updated to use llama2 model
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": test_input}
             ]
         )
-        output_text = response.content
+        output_text = response['message']['content']
 
         # Validate JSON
         is_valid, msg = validate_json(output_text)
@@ -72,13 +72,13 @@ with open(csv_file, mode="w", newline="", encoding="utf-8") as csvfile:
             re_prompted = True
             re_prompt_text = "Return JSON strictly as per schema: plan, reset_tip, motivation, stress_score."
             response = client.chat(
-                model="ollama",
+                model="llama2",  # Updated to use llama2 model
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": test_input + "\n" + re_prompt_text}
                 ]
             )
-            output_text = response.content
+            output_text = response['message']['content']
             is_valid, msg = validate_json(output_text)
 
         # Write to CSV
