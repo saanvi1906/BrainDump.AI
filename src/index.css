@@ -1,68 +1,223 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* BrainDump Design System - Stress to Success Colors & Animations */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Base Colors - Light theme with ombre inspiration */
+    --background: 320 25% 98%;
+    --foreground: 260 15% 20%;
+
+    /* Card System - Subtle ombre backgrounds */
+    --card: 320 20% 97%;
+    --card-foreground: 260 15% 25%;
+
+    --popover: 320 20% 97%;
+    --popover-foreground: 260 15% 25%;
+
+    /* Primary - Beautiful magenta-purple from logo */
+    --primary: 320 70% 60%;
+    --primary-foreground: 320 20% 98%;
+
+    /* Secondary - Soft purple-blue transition */
+    --secondary: 280 35% 85%;
+    --secondary-foreground: 280 40% 25%;
+
+    /* Muted - Gentle purple-gray */
+    --muted: 300 20% 92%;
+    --muted-foreground: 300 15% 55%;
+
+    /* Accent - Vibrant teal-green from logo */
+    --accent: 180 65% 55%;
+    --accent-foreground: 180 20% 15%;
+
+    /* Destructive - Soft coral */
+    --destructive: 350 65% 58%;
+    --destructive-foreground: 350 15% 95%;
+
+    /* Interactive elements */
+    --border: 300 20% 88%;
+    --input: 310 25% 94%;
+    --ring: 320 70% 60%;
+
+    --radius: 1rem;
+
+    /* Emotional Color Mapping - Ombre inspired */
+    --emotion-stressed: 350 75% 65%;      /* Pink-coral */
+    --emotion-anxious: 320 70% 60%;       /* Magenta-pink */
+    --emotion-tired: 260 50% 60%;         /* Purple-blue */
+    --emotion-calm: 200 55% 60%;          /* Blue-teal */
+    --emotion-motivated: 180 65% 55%;     /* Teal-green */
+    --emotion-happy: 160 70% 65%;         /* Green */
+
+    /* Ombre Gradients - Pink to Purple to Blue to Green */
+    --gradient-chaos: linear-gradient(135deg, hsl(350 75% 65% / 0.1), hsl(320 70% 60% / 0.1), hsl(260 50% 60% / 0.1));
+    --gradient-clarity: linear-gradient(135deg, hsl(320 70% 60%), hsl(260 60% 65%), hsl(200 55% 60%));
+    --gradient-motivation: linear-gradient(135deg, hsl(320 70% 60%), hsl(280 60% 65%), hsl(180 65% 55%));
+    --gradient-wellness: linear-gradient(135deg, hsl(200 55% 60%), hsl(180 65% 55%), hsl(160 70% 65%));
+    --gradient-ombre: linear-gradient(135deg, hsl(350 75% 65%), hsl(320 70% 60%), hsl(280 60% 65%), hsl(260 50% 60%), hsl(200 55% 60%), hsl(180 65% 55%), hsl(160 70% 65%));
+    --gradient-ombre-light: linear-gradient(135deg, hsl(350 75% 65% / 0.3), hsl(320 70% 60% / 0.3), hsl(280 60% 65% / 0.3), hsl(260 50% 60% / 0.3), hsl(200 55% 60% / 0.3), hsl(180 65% 55% / 0.3), hsl(160 70% 65% / 0.3));
+
+    /* Animation variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --shadow-glow: 0 4px 20px hsl(320 70% 60% / 0.25);
+    --shadow-card: 0 2px 10px hsl(300 15% 20% / 0.08);
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    --background: 280 20% 8%;
+    --foreground: 300 15% 92%;
+
+    --card: 280 15% 10%;
+    --card-foreground: 300 15% 88%;
+
+    --popover: 280 15% 10%;
+    --popover-foreground: 300 15% 88%;
+
+    --primary: 320 75% 65%;
+    --primary-foreground: 280 20% 8%;
+
+    --secondary: 280 25% 20%;
+    --secondary-foreground: 280 25% 85%;
+
+    --muted: 290 15% 15%;
+    --muted-foreground: 290 10% 65%;
+
+    --accent: 180 70% 60%;
+    --accent-foreground: 180 20% 10%;
+
+    --destructive: 350 60% 55%;
+    --destructive-foreground: 350 15% 90%;
+
+    --border: 290 15% 18%;
+    --input: 285 20% 12%;
+    --ring: 320 75% 65%;
+
+    /* Dark mode emotion colors */
+    --emotion-stressed: 350 70% 60%;
+    --emotion-anxious: 320 65% 55%;
+    --emotion-tired: 260 45% 55%;
+    --emotion-calm: 200 50% 55%;
+    --emotion-motivated: 180 60% 50%;
+    --emotion-happy: 160 65% 60%;
+
+    /* Dark ombre gradients */
+    --gradient-chaos: linear-gradient(135deg, hsl(350 70% 60% / 0.15), hsl(320 65% 55% / 0.15), hsl(260 45% 55% / 0.15));
+    --gradient-clarity: linear-gradient(135deg, hsl(320 75% 65%), hsl(260 55% 60%), hsl(200 50% 55%));
+    --gradient-motivation: linear-gradient(135deg, hsl(320 75% 65%), hsl(280 55% 60%), hsl(180 60% 50%));
+    --gradient-wellness: linear-gradient(135deg, hsl(200 50% 55%), hsl(180 60% 50%), hsl(160 65% 60%));
+    --gradient-ombre: linear-gradient(135deg, hsl(350 70% 60%), hsl(320 75% 65%), hsl(280 55% 60%), hsl(260 45% 55%), hsl(200 50% 55%), hsl(180 60% 50%), hsl(160 65% 60%));
+    --gradient-ombre-light: linear-gradient(135deg, hsl(350 70% 60% / 0.2), hsl(320 75% 65% / 0.2), hsl(280 55% 60% / 0.2), hsl(260 45% 55% / 0.2), hsl(200 50% 55% / 0.2), hsl(180 60% 50% / 0.2), hsl(160 65% 60% / 0.2));
+
+    --shadow-glow: 0 4px 20px hsl(320 75% 65% / 0.3);
+    --shadow-card: 0 2px 10px hsl(0 0% 0% / 0.3);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Custom utility classes for BrainDump */
+@layer utilities {
+  /* Chaos input styling with ombre */
+  .chaos-input {
+    position: relative;
+    background: linear-gradient(45deg, 
+      hsl(var(--card)) 25%, 
+      hsl(var(--muted)/30) 25%, 
+      hsl(var(--muted)/30) 50%, 
+      hsl(var(--card)) 50%, 
+      hsl(var(--card)) 75%, 
+      hsl(var(--muted)/30) 75%
+    );
+    background-size: 8px 8px;
+    animation: shimmer 3s linear infinite;
+    @apply border-dashed border-2 border-primary/30;
+    @apply placeholder:text-muted-foreground/60 placeholder:italic;
+    @apply transition-all duration-500;
+  }
+
+  .chaos-input:focus {
+    background: hsl(var(--card));
+    animation: none;
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+    @apply ring-2 ring-primary/50 border-primary/50;
+  }
+
+  /* Card reveal animations */
+  .reveal-card {
+    @apply opacity-0 transform translate-y-8 scale-95;
+    animation: reveal 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  .reveal-card:nth-child(2) { animation-delay: 0.1s; }
+  .reveal-card:nth-child(3) { animation-delay: 0.2s; }
+
+  /* Emotion bubble animations with ombre colors */
+  .emotion-bubble {
+    @apply rounded-full transition-all duration-300;
+    animation: float 3s ease-in-out infinite;
+    background: var(--gradient-ombre);
+  }
+
+  .emotion-bubble:hover {
+    @apply scale-110;
+    filter: brightness(1.2) saturate(1.2);
+  }
+
+  /* Micro-interactions */
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: hsl(var(--primary) / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple-effect:active::after {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Keyframe animations */
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
   }
 }

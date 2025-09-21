@@ -27,3 +27,7 @@ node_modules/
 dist/
 .env
 .vite
+
+# local backups
+src_backup/
+public_backup/
