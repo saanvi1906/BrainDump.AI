@@ -1,0 +1,23 @@
+# requirements.txt
+# BrainDump.AI Backend Dependencies
+# =================================
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# AI/LLM Integration  
+ollama>=0.1.0
+
+# Memory Storage
+supermemory>=3.1.0
+
+# Data Validation
+pydantic>=2.5.0
+
+# HTTP Client (for API calls)
+httpx>=0.25.0
+
+# Development Dependencies (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
